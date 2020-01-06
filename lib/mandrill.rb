@@ -33,7 +33,7 @@ module Mandrill
             params[:key] = @apikey
             params = JSON.generate(params)
             r = @session.post(:path => "#{@path}#{url}.json", :headers => {'Content-Type' => 'application/json'}, :body => params)
-            
+
             cast_error(r.body) if r.status != 200
             return JSON.parse(r.body)
         end
@@ -58,6 +58,7 @@ module Mandrill
                 'Unknown_Subaccount' => UnknownSubaccountError,
                 'Unknown_Template' => UnknownTemplateError,
                 'ServiceUnavailable' => ServiceUnavailableError,
+                'ServiceUnavailableError' => ServiceUnavailableError,
                 'Unknown_Message' => UnknownMessageError,
                 'Invalid_Tag_Name' => InvalidTagNameError,
                 'Invalid_Reject' => InvalidRejectError,
@@ -145,4 +146,3 @@ module Mandrill
         end
     end
 end
-
