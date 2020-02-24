@@ -17,15 +17,10 @@ module Mandrill
             @session = Excon.new @host
             @debug = debug
 
-            if not apikey
-                if ENV['MANDRILL_APIKEY']
-                    apikey = ENV['MANDRILL_APIKEY']
-                else
-                    apikey = read_configs
-                end
-            end
+            # Note: For transitional phase so as not to break <many> apps
+            apikey ||= ENV['MANDRILL_API_KEY'] || ENV['MANDRILL_APIKEY'] || read_configs
 
-            raise Error, 'You must provide a Mandrill API key' if not apikey
+            raise Error, 'You must provide a Mandrill API key' unless apikey
             @apikey = apikey
         end
 
