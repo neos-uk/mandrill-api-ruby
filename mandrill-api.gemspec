@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
     s.name = 'mandrill-api-neos'
-    s.version = '1.0.55'
+    s.version = '1.0.56'
     s.summary = 'A Ruby API library for the Mandrill email as a service platform.  Originally on https://bitbucket.org/mailchimp/mandrill-api-ruby/'
     s.description = s.summary
     s.authors = ['Mandrill Devs']
